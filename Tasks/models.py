@@ -16,4 +16,14 @@ class Tasks (models.Model):
 
     owner = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='tasks')
     title = models.CharField(max_length=255)
-    discription = models.models.TextField(blank=True)
+    discription = models.TextField(blank=True)
+    status = models.CharField(max_length=10 , choices=STATUS_CHOICES, default="todo")
+    priority = models.CharField(max_length=10 , choices=PRIORITY_CHOICES, default="medium")
+    deadline = models.DateTimeField(null=True, blank=True)
+    is_archived = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
