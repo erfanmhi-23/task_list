@@ -4,7 +4,7 @@ from django.db import models
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     display_name = models.CharField(max_length=50, blank=True)
-    timezone = models.models.TimeField(max_length=50, blank=True)
+    timezone = models.TimeField(max_length=50, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
