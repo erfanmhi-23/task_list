@@ -12,4 +12,4 @@ def profile_view(request):
     else:
         form = UserUpdateForm(instance=request.user)
 
-    return render(request, 'Accounts/templates/profile.html', {'form': form})
+    return render(request, 'profile.html', {'form': form})

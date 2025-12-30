@@ -6,7 +6,7 @@ from .forms import TaskForm
 @login_required
 def tasklistview(request):
     tasks = Tasks.objects.filter(owner=request.user.profile, is_archived = False).order_by("-created_at")
-    return render(request, 'tasks/task_list.html', {'tasks': tasks})
+    return render(request, 'task_list.html', {'tasks': tasks})
 
 @login_required
 def taskcreateview(request):
@@ -19,7 +19,7 @@ def taskcreateview(request):
             return redirect('task-list')
     else:
         form = TaskForm()
-    return render(request, 'tasks/task_form.html', {'form': form})
+    return render(request, 'task_form.html', {'form': form})
 
 @login_required
 def taskupdateview(request, pk):
@@ -31,7 +31,7 @@ def taskupdateview(request, pk):
             return redirect('task-list')
     else:
         form = TaskForm(instance=task)
-    return render(request, 'tasks/task_form.html', {'form': form})
+    return render(request, 'task_form.html', {'form': form})
 
 @login_required
 def taskarchiveview(request, pk):
