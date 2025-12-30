@@ -1,0 +1,13 @@
+<h2>لیست تسک‌ها</h2>
+<a href="{% url 'task-create' %}">تسک جدید</a>
+<ul>
+    {% for task in tasks %}
+        <li>
+            {{ task.title }} - {{ task.status }}
+            <a href="{% url 'task-update' task.pk %}">ویرایش</a>
+            <a href="{% url 'task-archive' task.pk %}">آرشیو</a>
+        </li>
+    {% empty %}
+        <li>تسکی وجود ندارد.</li>
+    {% endfor %}
+</ul>
